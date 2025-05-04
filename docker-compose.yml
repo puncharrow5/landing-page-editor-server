@@ -1,0 +1,31 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:8.0.23
+    restart: 'no'
+    container_name: landing-page-editor-server-mysql
+    environment:
+      - MYSQL_ROOT_USER=root
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=landing-page-editor-server-db
+      - MYSQL_ROOT_HOST=%
+      - TZ=Asia/Seoul
+    ports:
+      - '3306:3306'
+    command:
+      - 'mysqld'
+      - '--character-set-server=utf8mb4'
+      - '--collation-server=utf8mb4_unicode_ci'
+      - '--lower_case_table_names=1'
+    volumes:
+      - ./mysql:/var/lib/mysql
+
+  redis:
+    image: redis:6.2.6
+    command: redis-server --requirepass root --port 6379 --dbfilename dump.rdb --dir /data
+    restart: 'no'
+    container_name: landing-page-editor-server-redis
+    ports:
+      - 6379:6379
+    volumes:
+      - ./redis:/data

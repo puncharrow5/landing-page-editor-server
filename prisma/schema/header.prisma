@@ -1,0 +1,36 @@
+// 헤더
+model Header {
+    id              Int     @id @default(autoincrement())
+    logo            String?
+    logoSize        String?
+    height          String?
+    padding         String?
+    gap             String?
+    backgroundColor String?
+    textSize        String?
+    textColor       String?
+
+    // 사이트
+    siteId Int?  @unique
+    site   Site? @relation(fields: [siteId], references: [id])
+}
+
+// 모바일 헤더
+model MobileHeader {
+    id                  Int     @id @default(autoincrement())
+    logo                String?
+    logoSize            String?
+    button              String?
+    buttonSize          String?
+    height              String?
+    padding             String?
+    menuPadding         String?
+    backgroundColor     String?
+    menuBackgroundColor String?
+    textSize            String?
+    textColor           String?
+
+    // 사이트
+    siteId Int?  @unique
+    site   Site? @relation(fields: [siteId], references: [id])
+}

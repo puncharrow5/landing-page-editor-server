@@ -1,0 +1,47 @@
+// 관리자
+model Admin {
+    id           Int     @id @default(autoincrement())
+    email        String  @unique
+    password     String
+    name         String
+    profileImage String?
+    refreshToken String?
+
+    roleId Int
+    role   Role @relation(fields: [roleId], references: [id])
+
+    sites Site[]
+
+    histroies History[]
+}
+
+// 관리자 권한
+model Role {
+    id          Int    @id @default(autoincrement())
+    name        String @unique
+    description String
+
+    admins Admin[]
+}
+
+// 활동 내역
+model History {
+    id          Int      @id @default(autoincrement())
+    description String
+    createdAt   DateTime @default(now())
+
+    adminId Int
+    admin   Admin @relation(fields: [adminId], references: [id])
+
+    siteId Int
+    site   Site @relation(fields: [siteId], references: [id])
+
+    componentId Int?
+    component   Component? @relation(fields: [componentId], references: [id])
+
+    childId Int?
+    child   Child? @relation(fields: [childId], references: [id])
+
+    mobileChildId Int?
+    mobileChild   MobileChild? @relation(fields: [mobileChildId], references: [id])
+}

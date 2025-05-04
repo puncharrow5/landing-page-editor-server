@@ -1,0 +1,43 @@
+// 푸터
+model Footer {
+    id              Int     @id @default(autoincrement())
+    footerType      Int
+    logo            String?
+    logoSize        String?
+    contentTop      String?
+    helpCenter      String?
+    terms           String? @db.Text
+    contentBottom   String?
+    backgroundColor String?
+    paddingTop      String?
+    paddingBottom   String?
+    textSize        String?
+    textColor       String?
+    lineHeight      Float?
+
+    // 사이트
+    siteId Int?  @unique
+    site   Site? @relation(fields: [siteId], references: [id])
+}
+
+// 모바일 푸터
+model MobileFooter {
+    id              Int     @id @default(autoincrement())
+    footerType      Int
+    logo            String?
+    logoSize        String?
+    contentTop      String?
+    helpCenter      String?
+    terms           String? @db.Text
+    contentBottom   String?
+    backgroundColor String?
+    paddingTop      String?
+    paddingBottom   String?
+    textSize        String?
+    textColor       String?
+    lineHeight      Float?
+
+    // 사이트
+    siteId Int?  @unique
+    site   Site? @relation(fields: [siteId], references: [id])
+}

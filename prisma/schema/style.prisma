@@ -1,0 +1,173 @@
+// 배경 종류
+enum BackgroundType {
+    COLOR
+    IMAGE
+}
+
+// 컴포넌트 스타일
+model ComponentStyle {
+    id             Int            @id @default(autoincrement())
+    height         String?
+    padding        String?
+    grid           Int?
+    gap            String?
+    background     String?
+    backgroundType BackgroundType @default(COLOR)
+
+    // 컴포넌트
+    componentId Int       @unique
+    component   Component @relation(fields: [componentId], references: [id])
+}
+
+// 모바일 컴포넌트 스타일
+model ComponentMobileStyle {
+    id             Int            @id @default(autoincrement())
+    height         String?
+    padding        String?
+    grid           Int?
+    gap            String?
+    background     String?
+    backgroundType BackgroundType @default(COLOR)
+
+    // 컴포넌트
+    componentId Int       @unique
+    component   Component @relation(fields: [componentId], references: [id])
+}
+
+// 제목 스타일
+model TitleStyle {
+    id               Int     @id @default(autoincrement())
+    margin           String?
+    mobileMargin     String?
+    size             String?
+    mobileSize       String?
+    lineHeight       Float?
+    mobileLineHeight Float?
+    color            String?
+    mobileColor      String?
+
+    // 컴포넌트
+    componentId Int       @unique
+    component   Component @relation(fields: [componentId], references: [id])
+}
+
+// 내용 스타일
+model ContentStyle {
+    id               Int     @id @default(autoincrement())
+    margin           String?
+    mobileMargin     String?
+    size             String?
+    mobileSize       String?
+    lineHeight       Float?
+    mobileLineHeight Float?
+    color            String?
+    mobileColor      String?
+
+    // 컴포넌트
+    componentId Int       @unique
+    component   Component @relation(fields: [componentId], references: [id])
+}
+
+// 자식 컴포넌트 스타일
+model ChildStyle {
+    id             Int            @id @default(autoincrement())
+    width          String?
+    height         String?
+    margin         String?
+    padding        String?
+    background     String?
+    backgroundType BackgroundType @default(COLOR)
+    border         String?
+    borderRadius   String?
+
+    // 제목
+    titleSize       String?
+    titleColor      String?
+    titleLineHeight Float?
+    titleMargin     String?
+
+    // 내용
+    contentSize       String?
+    contentColor      String?
+    contentLineHeight Float?
+    contentMargin     String?
+
+    // 자식 컴포넌트
+    childId Int   @unique
+    child   Child @relation(fields: [childId], references: [id])
+}
+
+// 모바일 자식 컴포넌트 스타일
+model MobileChildStyle {
+    id             Int            @id @default(autoincrement())
+    width          String?
+    height         String?
+    margin         String?
+    padding        String?
+    background     String?
+    backgroundType BackgroundType @default(COLOR)
+    border         String?
+    borderRadius   String?
+
+    // 제목
+    titleSize       String?
+    titleColor      String?
+    titleLineHeight Float?
+    titleMargin     String?
+
+    // 내용
+    contentSize       String?
+    contentColor      String?
+    contentLineHeight Float?
+    contentMargin     String?
+
+    // 자식 컴포넌트
+    mobileChildId Int         @unique
+    mobileChild   MobileChild @relation(fields: [mobileChildId], references: [id])
+}
+
+// 문의 스타일
+model InquiryStyle {
+    id              Int     @id @default(autoincrement())
+    padding         String?
+    gap             String?
+    textSize        String?
+    textColor       String?
+    lineHeight      Float?
+    backgroundColor String?
+
+    // 버튼
+    buttonWidth     String?
+    buttonHeight    String?
+    buttonTextSize  String?
+    buttonTextColor String?
+    buttonColor     String?
+    buttonRadius    String?
+
+    // 컴포넌트
+    componentId Int       @unique
+    component   Component @relation(fields: [componentId], references: [id])
+}
+
+// 모바일 문의 스타일
+model MobileInquiryStyle {
+    id              Int     @id @default(autoincrement())
+    padding         String?
+    gap             String?
+    textSize        String?
+    textColor       String?
+    lineHeight      Float?
+    backgroundColor String?
+
+    // 버튼
+    buttonWidth     String?
+    buttonHeight    String?
+    buttonTextSize  String?
+    buttonTextColor String?
+    buttonColor     String?
+    buttonRadius    String?
+
+    // 컴포넌트
+    componentId Int       @unique
+    component   Component @relation(fields: [componentId], references: [id])
+}
