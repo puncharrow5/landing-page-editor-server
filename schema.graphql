@@ -1107,6 +1107,21 @@ type Mutation {
     """인증 코드"""
     verifyCode: String!
   ): Boolean!
+
+  """이메일 발송"""
+  SendEmail(
+    """보내는 이메일"""
+    from: String!
+
+    """받는 이메일"""
+    to: String!
+
+    """제목"""
+    subject: String!
+
+    """내용"""
+    html: String!
+  ): Boolean!
 }
 
 """The `Upload` scalar type represents a file upload."""
