@@ -20,6 +20,7 @@ import { FileModule } from './file/file.module';
 import { MobileChildModule } from './mobile-child/mobile-child.module';
 import { RoleModule } from './role/role.module';
 import { HistoryModule } from './history/history.module';
+import { EmailModule } from './email/email.module';
 
 @Module({
   imports: [
@@ -63,6 +64,7 @@ import { HistoryModule } from './history/history.module';
     MobileChildModule,
     RoleModule,
     HistoryModule,
+    EmailModule,
   ],
   controllers: [],
   providers: [],

@@ -6,11 +6,7 @@ import { UpdateFooterArgs, UpdateMobileFooterArgs } from './dto';
 
 @Injectable()
 export class FooterService {
-  constructor(
-    private prisma: PrismaService,
-    private readonly fileService: FileService,
-    private readonly configService: ConfigService,
-  ) {}
+  constructor(private prisma: PrismaService) {}
 
   // 푸터 조회
   findFooter(siteId: number) {

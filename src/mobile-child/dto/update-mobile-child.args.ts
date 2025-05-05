@@ -2,7 +2,6 @@ import { Int, Field, PickType, ArgsType } from '@nestjs/graphql';
 import { MobileChildEntity } from '@libs/entity';
 import { IsInt, IsOptional, IsString, ValidateNested } from 'class-validator';
 import { Type } from 'class-transformer';
-import { FileUpload, GraphQLUpload } from 'graphql-upload';
 import { MobileChildStyleInput } from './mobile-child-style.input';
 
 @ArgsType()
@@ -33,11 +32,4 @@ export class UpdateMobileChildArgs extends PickType(MobileChildEntity, [
   @Type(() => MobileChildStyleInput)
   @IsOptional()
   mobileChildStyle: MobileChildStyleInput | null;
-
-  @Field(() => GraphQLUpload, {
-    description: '첨부파일',
-    nullable: true,
-  })
-  @IsOptional()
-  file: FileUpload | null;
 }

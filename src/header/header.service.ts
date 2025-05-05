@@ -1,16 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'nestjs-prisma';
 import { UpdateHeaderArgs, UpdateMobileHeaderArgs } from './dto';
-import { FileService } from 'src/file/file.service';
-import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class HeaderService {
-  constructor(
-    private prisma: PrismaService,
-    private readonly fileService: FileService,
-    private readonly configService: ConfigService,
-  ) {}
+  constructor(private prisma: PrismaService) {}
 
   // 헤더 조회
   findHeader(siteId: number) {

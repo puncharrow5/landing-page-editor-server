@@ -1,6 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { FileService } from 'src/file/file.service';
-import { ConfigService } from '@nestjs/config';
 import { PrismaService } from 'nestjs-prisma';
 import {
   CreateMobileChildArgs,
@@ -10,11 +8,7 @@ import {
 
 @Injectable()
 export class MobileChildService {
-  constructor(
-    private prisma: PrismaService,
-    private readonly fileService: FileService,
-    private readonly configService: ConfigService,
-  ) {}
+  constructor(private prisma: PrismaService) {}
 
   // 모바일 자식 컴포넌트 목록 조회
   findManyMobileChild(componentId: number) {
@@ -89,24 +83,9 @@ export class MobileChildService {
 
   // 모바일 자식 컴포넌트 수정
   async updateMobileChild(
-    { id, title, content, mobileChildStyle, file }: UpdateMobileChildArgs,
+    { id, title, content, mobileChildStyle }: UpdateMobileChildArgs,
     adminId: number,
   ) {
-    let newBackground = mobileChildStyle.background;
-
-    if (mobileChildStyle.backgroundType === 'IMAGE' && file) {
-      const [backgroundFile] = await Promise.all([file]);
-
-      const bucket = this.configService.get('AWS_S3_BUCKET');
-      const uploadedFile = await this.fileService.uploadFile(
-        backgroundFile.createReadStream(),
-        backgroundFile.filename,
-        bucket,
-      );
-
-      newBackground = uploadedFile.Key;
-    }
-
     await this.prisma.$transaction(async (tx) => {
       const mobileChild = await tx.mobileChild.update({
         where: { id },
@@ -114,7 +93,7 @@ export class MobileChildService {
           title,
           content,
           mobileChildStyle: {
-            update: { ...mobileChildStyle, background: newBackground },
+            update: { ...mobileChildStyle },
           },
         },
       });

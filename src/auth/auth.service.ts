@@ -3,7 +3,6 @@ import { PrismaService } from 'nestjs-prisma';
 import { SendVerifyCodeArgs, VerifyEmailArgs } from './dto';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { Cache } from 'cache-manager';
-import { ConfigService } from '@nestjs/config';
 import * as nodemailer from 'nodemailer';
 
 interface EmailOptions {
