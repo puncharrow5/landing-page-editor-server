@@ -3,33 +3,15 @@ import { PrismaService } from 'nestjs-prisma';
 import { SendVerifyCodeArgs, VerifyEmailArgs } from './dto';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { Cache } from 'cache-manager';
-import * as nodemailer from 'nodemailer';
-
-interface EmailOptions {
-  from: string;
-  to: string;
-  subject: string;
-  html: string;
-}
+import { EmailService } from 'src/email/email.service';
 
 @Injectable()
 export class AuthService {
-  private transporter;
-
   constructor(
     @Inject(CACHE_MANAGER) private readonly cacheManager: Cache,
+    private emailService: EmailService,
     private prisma: PrismaService,
-  ) {
-    this.transporter = nodemailer.createTransport({
-      service: 'gmail',
-      port: 587,
-      secure: true,
-      auth: {
-        user: process.env.SMTP_EMAIL,
-        pass: process.env.SMTP_PASSWORD,
-      },
-    });
-  }
+  ) {}
 
   // 랜덤 6자리 숫자 생성
   private generateRandomNumber(): number {
@@ -54,7 +36,7 @@ export class AuthService {
 
     const verifyCode = this.generateRandomNumber().toString();
 
-    const emailOptions: EmailOptions = {
+    const emailOptions = {
       from: process.env.SMTP_EMAIL,
       to: email,
       subject: '회원가입 인증코드 이메일입니다.',
@@ -63,7 +45,7 @@ export class AuthService {
 
     await this.cacheManager.set(email, verifyCode, { ttl: 180 } as any);
 
-    await this.transporter.sendMail(emailOptions);
+    await this.emailService.sendEmail(emailOptions);
 
     return true;
   }

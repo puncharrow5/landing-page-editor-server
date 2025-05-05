@@ -6,10 +6,11 @@ import { AdminAccessStrategy } from './admin-access.strategy';
 import { AdminUpdateAccessStrategy } from './admin-update-access.strategy';
 import { AdminMasterAccessStrategy } from './admin-master-access.strategy';
 import { CacheModule } from '@nestjs/cache-manager';
+import { EmailModule } from 'src/email/email.module';
 
 @Global()
 @Module({
-  imports: [AdminModule, CacheModule.register()],
+  imports: [AdminModule, EmailModule, CacheModule.register()],
   providers: [
     AuthResolver,
     AuthService,

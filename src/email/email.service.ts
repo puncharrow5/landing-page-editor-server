@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'nestjs-prisma';
 import * as nodemailer from 'nodemailer';
+import { SendEmailArgs } from './dto';
 
 interface EmailOptions {
   from: string;
@@ -23,5 +24,19 @@ export class EmailService {
         pass: process.env.SMTP_PASSWORD,
       },
     });
+  }
+
+  // 이메일 발송
+  async sendEmail({ from, to, subject, html }: SendEmailArgs) {
+    const emailOptions: EmailOptions = {
+      from,
+      to,
+      subject,
+      html,
+    };
+
+    await this.transporter.sendMail(emailOptions);
+
+    return true;
   }
 }
