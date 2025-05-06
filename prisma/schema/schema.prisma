@@ -8,6 +8,17 @@ generator client {
   provider = "prisma-client-js"
 }
 
+generator jsonSchema {
+  provider              = "prisma-json-schema-generator"
+  includeRequiredFields = "true"
+}
+
+generator markdown {
+  provider = "prisma-markdown"
+  output   = "./ERD.md"
+  title    = "랜딩페이지 에디터"
+}
+
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")

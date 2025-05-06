@@ -1,0 +1,1467 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "Admin": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "profileImage": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "refreshToken": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "role": {
+          "$ref": "#/definitions/Role"
+        },
+        "sites": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Site"
+          }
+        },
+        "histroies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/History"
+          }
+        }
+      },
+      "required": [
+        "email",
+        "password",
+        "name",
+        "roleId"
+      ]
+    },
+    "Role": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "admins": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Admin"
+          }
+        }
+      },
+      "required": [
+        "name",
+        "description"
+      ]
+    },
+    "History": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "description": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "admin": {
+          "$ref": "#/definitions/Admin"
+        },
+        "site": {
+          "$ref": "#/definitions/Site"
+        },
+        "component": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Component"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "child": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Child"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "mobileChild": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/MobileChild"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "description",
+        "adminId",
+        "siteId"
+      ]
+    },
+    "Child": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "content": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "childStyle": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ChildStyle"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "isDelete": {
+          "type": "boolean",
+          "default": false
+        },
+        "component": {
+          "$ref": "#/definitions/Component"
+        },
+        "histories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/History"
+          }
+        }
+      },
+      "required": [
+        "componentId"
+      ]
+    },
+    "MobileChild": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "content": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "mobileChildStyle": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/MobileChildStyle"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "isDelete": {
+          "type": "boolean",
+          "default": false
+        },
+        "component": {
+          "$ref": "#/definitions/Component"
+        },
+        "histories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/History"
+          }
+        }
+      },
+      "required": [
+        "componentId"
+      ]
+    },
+    "Component": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "componentType": {
+          "type": "string",
+          "enum": [
+            "SECTION",
+            "INQUIRY"
+          ]
+        },
+        "componentStyle": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ComponentStyle"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "componentMobileStyle": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ComponentMobileStyle"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "mobileTitle": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "titleStyle": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/TitleStyle"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "content": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "mobileContent": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "contentStyle": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ContentStyle"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "inquiryStyle": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/InquiryStyle"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "mobileInquiryStyle": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/MobileInquiryStyle"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "isDelete": {
+          "type": "boolean",
+          "default": false
+        },
+        "site": {
+          "$ref": "#/definitions/Site"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Child"
+          }
+        },
+        "mobileChildren": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MobileChild"
+          }
+        },
+        "histories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/History"
+          }
+        }
+      },
+      "required": [
+        "name",
+        "componentType",
+        "siteId"
+      ]
+    },
+    "Footer": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "footerType": {
+          "type": "integer"
+        },
+        "logo": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "logoSize": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "contentTop": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "helpCenter": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "terms": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "contentBottom": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "backgroundColor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "paddingTop": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "paddingBottom": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "textSize": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "textColor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lineHeight": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "site": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Site"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "footerType"
+      ]
+    },
+    "MobileFooter": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "footerType": {
+          "type": "integer"
+        },
+        "logo": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "logoSize": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "contentTop": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "helpCenter": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "terms": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "contentBottom": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "backgroundColor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "paddingTop": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "paddingBottom": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "textSize": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "textColor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lineHeight": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "site": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Site"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "footerType"
+      ]
+    },
+    "Header": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "logo": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "logoSize": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "height": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "padding": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gap": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "backgroundColor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "textSize": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "textColor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "site": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Site"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": []
+    },
+    "MobileHeader": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "logo": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "logoSize": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "button": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "buttonSize": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "height": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "padding": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "menuPadding": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "backgroundColor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "menuBackgroundColor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "textSize": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "textColor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "site": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Site"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": []
+    },
+    "Site": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "header": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Header"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "mobileHeader": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/MobileHeader"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "components": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Component"
+          }
+        },
+        "footer": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Footer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "mobileFooter": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/MobileFooter"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "admins": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Admin"
+          }
+        },
+        "histories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/History"
+          }
+        }
+      },
+      "required": [
+        "domain",
+        "name",
+        "email"
+      ]
+    },
+    "ComponentStyle": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "height": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "padding": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "grid": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "gap": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "background": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "backgroundType": {
+          "type": "string",
+          "default": "COLOR",
+          "enum": [
+            "COLOR",
+            "IMAGE"
+          ]
+        },
+        "component": {
+          "$ref": "#/definitions/Component"
+        }
+      },
+      "required": [
+        "componentId"
+      ]
+    },
+    "ComponentMobileStyle": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "height": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "padding": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "grid": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "gap": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "background": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "backgroundType": {
+          "type": "string",
+          "default": "COLOR",
+          "enum": [
+            "COLOR",
+            "IMAGE"
+          ]
+        },
+        "component": {
+          "$ref": "#/definitions/Component"
+        }
+      },
+      "required": [
+        "componentId"
+      ]
+    },
+    "TitleStyle": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "margin": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "mobileMargin": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "size": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "mobileSize": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lineHeight": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "mobileLineHeight": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "color": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "mobileColor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "component": {
+          "$ref": "#/definitions/Component"
+        }
+      },
+      "required": [
+        "componentId"
+      ]
+    },
+    "ContentStyle": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "margin": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "mobileMargin": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "size": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "mobileSize": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lineHeight": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "mobileLineHeight": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "color": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "mobileColor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "component": {
+          "$ref": "#/definitions/Component"
+        }
+      },
+      "required": [
+        "componentId"
+      ]
+    },
+    "ChildStyle": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "width": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "height": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "margin": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "padding": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "background": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "backgroundType": {
+          "type": "string",
+          "default": "COLOR",
+          "enum": [
+            "COLOR",
+            "IMAGE"
+          ]
+        },
+        "border": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "borderRadius": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "titleSize": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "titleColor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "titleLineHeight": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "titleMargin": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "contentSize": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "contentColor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "contentLineHeight": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "contentMargin": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "child": {
+          "$ref": "#/definitions/Child"
+        }
+      },
+      "required": [
+        "childId"
+      ]
+    },
+    "MobileChildStyle": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "width": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "height": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "margin": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "padding": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "background": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "backgroundType": {
+          "type": "string",
+          "default": "COLOR",
+          "enum": [
+            "COLOR",
+            "IMAGE"
+          ]
+        },
+        "border": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "borderRadius": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "titleSize": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "titleColor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "titleLineHeight": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "titleMargin": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "contentSize": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "contentColor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "contentLineHeight": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "contentMargin": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "mobileChild": {
+          "$ref": "#/definitions/MobileChild"
+        }
+      },
+      "required": [
+        "mobileChildId"
+      ]
+    },
+    "InquiryStyle": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "padding": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gap": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "textSize": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "textColor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lineHeight": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "backgroundColor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "buttonWidth": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "buttonHeight": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "buttonTextSize": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "buttonTextColor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "buttonColor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "buttonRadius": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "component": {
+          "$ref": "#/definitions/Component"
+        }
+      },
+      "required": [
+        "componentId"
+      ]
+    },
+    "MobileInquiryStyle": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "padding": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gap": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "textSize": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "textColor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lineHeight": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "backgroundColor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "buttonWidth": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "buttonHeight": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "buttonTextSize": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "buttonTextColor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "buttonColor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "buttonRadius": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "component": {
+          "$ref": "#/definitions/Component"
+        }
+      },
+      "required": [
+        "componentId"
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "admin": {
+      "$ref": "#/definitions/Admin"
+    },
+    "role": {
+      "$ref": "#/definitions/Role"
+    },
+    "history": {
+      "$ref": "#/definitions/History"
+    },
+    "child": {
+      "$ref": "#/definitions/Child"
+    },
+    "mobileChild": {
+      "$ref": "#/definitions/MobileChild"
+    },
+    "component": {
+      "$ref": "#/definitions/Component"
+    },
+    "footer": {
+      "$ref": "#/definitions/Footer"
+    },
+    "mobileFooter": {
+      "$ref": "#/definitions/MobileFooter"
+    },
+    "header": {
+      "$ref": "#/definitions/Header"
+    },
+    "mobileHeader": {
+      "$ref": "#/definitions/MobileHeader"
+    },
+    "site": {
+      "$ref": "#/definitions/Site"
+    },
+    "componentStyle": {
+      "$ref": "#/definitions/ComponentStyle"
+    },
+    "componentMobileStyle": {
+      "$ref": "#/definitions/ComponentMobileStyle"
+    },
+    "titleStyle": {
+      "$ref": "#/definitions/TitleStyle"
+    },
+    "contentStyle": {
+      "$ref": "#/definitions/ContentStyle"
+    },
+    "childStyle": {
+      "$ref": "#/definitions/ChildStyle"
+    },
+    "mobileChildStyle": {
+      "$ref": "#/definitions/MobileChildStyle"
+    },
+    "inquiryStyle": {
+      "$ref": "#/definitions/InquiryStyle"
+    },
+    "mobileInquiryStyle": {
+      "$ref": "#/definitions/MobileInquiryStyle"
+    }
+  }
+}
