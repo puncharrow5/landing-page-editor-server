@@ -1,13 +1,13 @@
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import { EmailService } from './email.service';
-import { SendEmailArgs } from './dto';
+import { SendInquiryEmailArgs } from './dto';
 
 @Resolver()
 export class EmailResolver {
   constructor(private readonly emailService: EmailService) {}
 
-  @Mutation(() => Boolean, { description: '이메일 발송' })
-  async SendEmail(@Args() sendEmailArgs: SendEmailArgs) {
-    return await this.emailService.sendEmail(sendEmailArgs);
+  @Mutation(() => Boolean, { description: '문의 이메일 발송' })
+  async SendInquiryEmail(@Args() sendInquiryEmailArgs: SendInquiryEmailArgs) {
+    return await this.emailService.sendInquiryEmail(sendInquiryEmailArgs);
   }
 }

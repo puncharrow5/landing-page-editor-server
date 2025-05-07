@@ -11,3 +11,6 @@ export const regexEmoji =
 // 비밀번호 정규식 (한글,영문,특수문자 포함, 8~20자)
 export const regexPassword =
   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/;
+
+// 전화번호
+export const regexPhoneNumber = /^0\d{1,2}-\d{3,4}-\d{4}$/;

@@ -1,0 +1,1396 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""관리자"""
+type AdminEntity {
+  """ID"""
+  id: Int!
+
+  """이메일"""
+  email: String!
+
+  """비밀번호"""
+  password: String!
+
+  """이름"""
+  name: String!
+
+  """이름"""
+  profileImage: String
+
+  """리프레시 토큰"""
+  refreshToken: String
+
+  """관리자 권한 ID"""
+  roleId: Int!
+
+  """관리자 권한"""
+  role: RoleEntity
+}
+
+"""활동 내역"""
+type HistoryEntity {
+  """ID"""
+  id: Int!
+
+  """내용"""
+  description: String!
+
+  """시간"""
+  createdAt: DateTime!
+
+  """관리자 ID"""
+  adminId: Float!
+
+  """사이트 ID"""
+  siteId: Float!
+
+  """컴포넌트 ID"""
+  componentId: Float
+
+  """자식컴포넌트 ID"""
+  childId: Float
+
+  """모바일 자식컴포넌트 ID"""
+  mobileChildId: Float
+
+  """사이트"""
+  site: SiteEntity
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+"""관리자 권한"""
+type RoleEntity {
+  """ID"""
+  id: Int!
+
+  """이름"""
+  name: String!
+
+  """설명"""
+  description: String!
+}
+
+"""사이트"""
+type SiteEntity {
+  """ID"""
+  id: Int!
+
+  """도메인"""
+  domain: String!
+
+  """이름"""
+  name: String!
+
+  """사이트 이메일"""
+  email: String!
+
+  """컴포넌트 목록"""
+  components: [ComponentEntity!]
+
+  """헤더"""
+  header: HeaderEntity
+
+  """모바일 헤더"""
+  mobileHeader: MobileHeaderEntity
+
+  """푸터"""
+  footer: FooterEntity
+
+  """모바일 푸터"""
+  mobileFooter: MobileFooterEntity
+}
+
+"""헤더"""
+type HeaderEntity {
+  """ID"""
+  id: Int!
+
+  """로고"""
+  logo: String
+
+  """로고 사이즈"""
+  logoSize: String
+
+  """헤더 높이"""
+  height: String
+
+  """패딩"""
+  padding: String
+
+  """갭"""
+  gap: String
+
+  """배경 색상"""
+  backgroundColor: String
+
+  """텍스트 크기"""
+  textSize: String
+
+  """텍스트 색상"""
+  textColor: String
+
+  """사이트 ID"""
+  siteId: Int!
+}
+
+"""헤더"""
+type MobileHeaderEntity {
+  """ID"""
+  id: Int!
+
+  """로고"""
+  logo: String
+
+  """로고 사이즈"""
+  logoSize: String
+
+  """메뉴 버튼"""
+  button: String
+
+  """메뉴 버튼 사이즈"""
+  buttonSize: String
+
+  """헤더 높이"""
+  height: String
+
+  """패딩"""
+  padding: String
+
+  """메뉴 패딩"""
+  menuPadding: String
+
+  """배경 색상"""
+  backgroundColor: String
+
+  """메뉴 배경 색상"""
+  menuBackgroundColor: String
+
+  """텍스트 크기"""
+  textSize: String
+
+  """텍스트 색상"""
+  textColor: String
+
+  """사이트 ID"""
+  siteId: Int!
+}
+
+"""컴포넌트"""
+type ComponentEntity {
+  """ID"""
+  id: Int!
+
+  """컴포넌트 종류"""
+  componentType: ComponentType!
+
+  """컴포넌트 이름"""
+  name: String!
+
+  """제목"""
+  title: String
+
+  """모바일 제목"""
+  mobileTitle: String
+
+  """내용"""
+  content: String
+
+  """모바일 내용"""
+  mobileContent: String
+
+  """삭제 여부"""
+  isDelete: Boolean!
+
+  """사이트 ID"""
+  siteId: Int!
+
+  """제목 스타일"""
+  titleStyle: TitleStyleEntity
+
+  """컴포넌트 스타일"""
+  componentStyle: ComponentStyleEntity
+
+  """컴포넌트 모바일 스타일"""
+  componentMobileStyle: ComponentMobileStyleEntity
+
+  """내용 스타일"""
+  contentStyle: ContentStyleEntity
+
+  """문의 스타일"""
+  inquiryStyle: InquiryStyleEntity
+
+  """모바일 문의 스타일"""
+  mobileInquiryStyle: MobileInquiryStyleEntity
+
+  """자식 컴포넌트 목록"""
+  children: [ChildEntity!]
+
+  """모바일 자식 컴포넌트 목록"""
+  mobileChildren: [MobileChildEntity!]
+}
+
+"""컴포넌트 종류"""
+enum ComponentType {
+  """섹션"""
+  SECTION
+
+  """문의"""
+  INQUIRY
+}
+
+"""푸터"""
+type FooterEntity {
+  """ID"""
+  id: Int!
+
+  """푸터 타입"""
+  footerType: Int!
+
+  """로고"""
+  logo: String
+
+  """로고 사이즈"""
+  logoSize: String
+
+  """상단 내용"""
+  contentTop: String
+
+  """고객센터"""
+  helpCenter: String
+
+  """약관"""
+  terms: String
+
+  """하단 내용"""
+  contentBottom: String
+
+  """배경 색상"""
+  backgroundColor: String
+
+  """상단 패딩"""
+  paddingTop: String
+
+  """하단 패딩"""
+  paddingBottom: String
+
+  """텍스트 크기"""
+  textSize: String
+
+  """텍스트 색상"""
+  textColor: String
+
+  """줄 높이"""
+  lineHeight: Float
+
+  """사이트 ID"""
+  siteId: Int!
+}
+
+"""모바일 푸터"""
+type MobileFooterEntity {
+  """ID"""
+  id: Int!
+
+  """푸터 타입"""
+  footerType: Int!
+
+  """로고"""
+  logo: String
+
+  """로고 사이즈"""
+  logoSize: String
+
+  """상단 내용"""
+  contentTop: String
+
+  """고객센터"""
+  helpCenter: String
+
+  """약관"""
+  terms: String
+
+  """하단 내용"""
+  contentBottom: String
+
+  """배경 색상"""
+  backgroundColor: String
+
+  """상단 패딩"""
+  paddingTop: String
+
+  """하단 패딩"""
+  paddingBottom: String
+
+  """텍스트 크기"""
+  textSize: String
+
+  """텍스트 색상"""
+  textColor: String
+
+  """줄 높이"""
+  lineHeight: Float
+
+  """사이트 ID"""
+  siteId: Int!
+}
+
+"""컴포넌트 스타일"""
+type ComponentStyleEntity {
+  """ID"""
+  id: Int!
+
+  """높이"""
+  height: String
+
+  """패딩"""
+  padding: String
+
+  """ID"""
+  grid: Int
+
+  """갭"""
+  gap: String
+
+  """배경"""
+  background: String
+
+  """배경 종류"""
+  backgroundType: BackgroundType
+
+  """컴포넌트 ID"""
+  componentId: Int!
+}
+
+"""배경 종류"""
+enum BackgroundType {
+  """색상"""
+  COLOR
+
+  """이미지"""
+  IMAGE
+}
+
+"""컴포넌트 모바일 스타일"""
+type ComponentMobileStyleEntity {
+  """ID"""
+  id: Int!
+
+  """높이"""
+  height: String
+
+  """패딩"""
+  padding: String
+
+  """ID"""
+  grid: Int
+
+  """갭"""
+  gap: String
+
+  """배경"""
+  background: String
+
+  """배경 종류"""
+  backgroundType: BackgroundType
+
+  """컴포넌트 ID"""
+  componentId: Int!
+}
+
+"""제목 스타일"""
+type TitleStyleEntity {
+  """ID"""
+  id: Int!
+
+  """마진"""
+  margin: String
+
+  """모바일 마진"""
+  mobileMargin: String
+
+  """텍스트 크기"""
+  size: String
+
+  """모바일 텍스트 크기"""
+  mobileSize: String
+
+  """줄 높이"""
+  lineHeight: Float
+
+  """모바일 줄 높이"""
+  mobileLineHeight: Float
+
+  """텍스트 색상"""
+  color: String
+
+  """모바일 텍스트 색상"""
+  mobileColor: String
+
+  """컴포넌트 ID"""
+  componentId: Int!
+}
+
+"""내용 스타일"""
+type ContentStyleEntity {
+  """ID"""
+  id: Int!
+
+  """마진"""
+  margin: String
+
+  """모바일 마진"""
+  mobileMargin: String
+
+  """텍스트 크기"""
+  size: String
+
+  """모바일 텍스트 크기"""
+  mobileSize: String
+
+  """줄 높이"""
+  lineHeight: Float
+
+  """모바일 줄 높이"""
+  mobileLineHeight: Float
+
+  """텍스트 색상"""
+  color: String
+
+  """모바일 텍스트 색상"""
+  mobileColor: String
+
+  """컴포넌트 ID"""
+  componentId: Int!
+}
+
+"""자식 컴포넌트"""
+type ChildEntity {
+  """ID"""
+  id: Int!
+
+  """제목"""
+  title: String
+
+  """내용"""
+  content: String
+
+  """삭제 여부"""
+  isDelete: Boolean!
+
+  """컴포넌트 ID"""
+  componentId: Int!
+
+  """자식 컴포넌트 스타일"""
+  childStyle: ChildStyleEntity
+}
+
+"""자식 컴포넌트 스타일"""
+type ChildStyleEntity {
+  """ID"""
+  id: Int!
+
+  """너비"""
+  width: String
+
+  """높이"""
+  height: String
+
+  """마진"""
+  margin: String
+
+  """패딩"""
+  padding: String
+
+  """배경"""
+  background: String
+
+  """배경 종류"""
+  backgroundType: BackgroundType
+
+  """테두리"""
+  border: String
+
+  """테두리 곡률"""
+  borderRadius: String
+
+  """제목 크기"""
+  titleSize: String
+
+  """제목 색상"""
+  titleColor: String
+
+  """제목 줄 높이"""
+  titleLineHeight: Float
+
+  """제목 마진"""
+  titleMargin: String
+
+  """내용 크기"""
+  contentSize: String
+
+  """내용 색상"""
+  contentColor: String
+
+  """내용 줄 높이"""
+  contentLineHeight: Float
+
+  """내용 마진"""
+  contentMargin: String
+
+  """자식컴포넌트 ID"""
+  childId: Int!
+}
+
+"""모바일 자식 컴포넌트"""
+type MobileChildEntity {
+  """ID"""
+  id: Int!
+
+  """제목"""
+  title: String
+
+  """내용"""
+  content: String
+
+  """삭제 여부"""
+  isDelete: Boolean!
+
+  """컴포넌트 ID"""
+  componentId: Int!
+
+  """모바일 자식 컴포넌트 스타일"""
+  mobileChildStyle: MobileChildStyleEntity
+}
+
+"""모바일 자식 컴포넌트 스타일"""
+type MobileChildStyleEntity {
+  """ID"""
+  id: Int!
+
+  """너비"""
+  width: String
+
+  """높이"""
+  height: String
+
+  """마진"""
+  margin: String
+
+  """패딩"""
+  padding: String
+
+  """배경"""
+  background: String
+
+  """배경 종류"""
+  backgroundType: BackgroundType
+
+  """테두리"""
+  border: String
+
+  """테두리 곡률"""
+  borderRadius: String
+
+  """제목 크기"""
+  titleSize: String
+
+  """제목 색상"""
+  titleColor: String
+
+  """제목 줄 높이"""
+  titleLineHeight: Float
+
+  """제목 마진"""
+  titleMargin: String
+
+  """내용 크기"""
+  contentSize: String
+
+  """내용 색상"""
+  contentColor: String
+
+  """내용 줄 높이"""
+  contentLineHeight: Float
+
+  """내용 마진"""
+  contentMargin: String
+
+  """모바일 자식 컴포넌트 ID"""
+  mobileChildId: Int!
+}
+
+"""문의 스타일"""
+type InquiryStyleEntity {
+  """ID"""
+  id: Int!
+
+  """패딩"""
+  padding: String
+
+  """갭"""
+  gap: String
+
+  """텍스트 크기"""
+  textSize: String
+
+  """텍스트 색상"""
+  textColor: String
+
+  """줄 높이"""
+  lineHeight: Float
+
+  """배경 색상"""
+  backgroundColor: String
+
+  """버튼 너비"""
+  buttonWidth: String
+
+  """버튼 높이"""
+  buttonHeight: String
+
+  """버튼 텍스트 크기"""
+  buttonTextSize: String
+
+  """버튼 텍스트 색상"""
+  buttonTextColor: String
+
+  """버튼 텍스트 색상"""
+  buttonColor: String
+
+  """버튼 텍스트 색상"""
+  buttonRadius: String
+
+  """컴포넌트 ID"""
+  componentId: Int!
+}
+
+"""모바일문의 스타일"""
+type MobileInquiryStyleEntity {
+  """ID"""
+  id: Int!
+
+  """패딩"""
+  padding: String
+
+  """갭"""
+  gap: String
+
+  """텍스트 크기"""
+  textSize: String
+
+  """텍스트 색상"""
+  textColor: String
+
+  """줄 높이"""
+  lineHeight: Float
+
+  """배경 색상"""
+  backgroundColor: String
+
+  """버튼 너비"""
+  buttonWidth: String
+
+  """버튼 높이"""
+  buttonHeight: String
+
+  """버튼 텍스트 크기"""
+  buttonTextSize: String
+
+  """버튼 텍스트 색상"""
+  buttonTextColor: String
+
+  """버튼 텍스트 색상"""
+  buttonColor: String
+
+  """버튼 텍스트 색상"""
+  buttonRadius: String
+
+  """컴포넌트 ID"""
+  componentId: Int!
+}
+
+type Query {
+  """관리자 정보"""
+  findAdmin: AdminEntity!
+
+  """ID로 사이트 조회"""
+  findOneSiteById(
+    """ID"""
+    id: Int!
+  ): SiteEntity!
+
+  """도메인으로 사이트 조회"""
+  findOneSiteByDomain(
+    """도메인"""
+    domain: String!
+  ): SiteEntity!
+
+  """관리자 ID로 사이트 목록 조회"""
+  findManySite: [SiteEntity!]!
+
+  """수정내역 목록 조회"""
+  findManyHistory(
+    """skip"""
+    skip: Int!
+
+    """take"""
+    take: Int!
+  ): [HistoryEntity!]!
+}
+
+type Mutation {
+  """회원가입"""
+  createAdmin(
+    """이메일"""
+    email: String!
+
+    """이름"""
+    name: String!
+
+    """비밀번호"""
+    password: String!
+
+    """비밀번호 확인"""
+    confirmPassword: String!
+  ): Boolean!
+
+  """로그인"""
+  login(
+    """이메일"""
+    email: String!
+
+    """비밀번호"""
+    password: String!
+  ): Boolean!
+
+  """로그아웃"""
+  logout: Boolean!
+
+  """AccessToken 재발급"""
+  getNewAccessToken: Boolean!
+
+  """이미지 업로드"""
+  updateProfileImage(
+    """이미지 파일"""
+    file: Upload
+  ): String!
+
+  """유저 권한 수정"""
+  updateAdminRole(
+    """ID"""
+    id: Int!
+
+    """어드민 ID"""
+    adminId: Int!
+
+    """권한 ID"""
+    roleId: Int!
+  ): Boolean!
+
+  """이미지 업로드"""
+  uploadImage(
+    """이미지 파일"""
+    file: Upload
+  ): String!
+
+  """컴포넌트 생성"""
+  createComponent(
+    """사이트 ID"""
+    siteId: Int!
+
+    """컴포넌트 종류"""
+    componentType: ComponentType!
+
+    """컴포넌트 이름"""
+    name: String!
+  ): Boolean!
+
+  """컴포넌트 수정"""
+  updateComponent(
+    """ID"""
+    id: Int!
+
+    """이름"""
+    name: String!
+
+    """제목"""
+    title: String
+
+    """모바일 제목"""
+    mobileTitle: String
+
+    """내용"""
+    content: String
+
+    """모바일 내용"""
+    mobileContent: String
+
+    """컴포넌트 스타일"""
+    componentStyle: ComponentStyleInput
+
+    """컴포넌트 모바일 스타일"""
+    componentMobileStyle: ComponentMobileStyleInput
+
+    """제목 스타일"""
+    titleStyle: TitleStyleInput
+
+    """내용 스타일"""
+    contentStyle: ContentStyleInput
+
+    """문의 스타일"""
+    inquiryStyle: InquiryStyleInput
+
+    """모바일 문의 스타일"""
+    mobileInquiryStyle: MobileInquiryStyleInput
+  ): Boolean!
+
+  """컴포넌트 삭제"""
+  deleteComponent(
+    """ID"""
+    id: Int!
+  ): Boolean!
+
+  """자식 컴포넌트 생성"""
+  createChild(
+    """컴포넌트 ID"""
+    componentId: Int!
+  ): Boolean!
+
+  """자식 컴포넌트 업데이트"""
+  updateChild(
+    """ID"""
+    id: Int!
+
+    """제목"""
+    title: String
+
+    """내용"""
+    content: String
+
+    """스타일"""
+    childStyle: ChildStyleInput
+  ): Boolean!
+
+  """자식 컴포넌트 삭제"""
+  deleteChild(
+    """ID"""
+    id: Int!
+  ): Boolean!
+
+  """모바일 자식 컴포넌트 생성"""
+  createMobileChild(
+    """컴포넌트 ID"""
+    componentId: Int!
+  ): Boolean!
+
+  """모바일 자식 컴포넌트 업데이트"""
+  updateMobileChild(
+    """ID"""
+    id: Int!
+
+    """제목"""
+    title: String
+
+    """내용"""
+    content: String
+
+    """스타일"""
+    mobileChildStyle: MobileChildStyleInput
+  ): Boolean!
+
+  """모바일 자식 컴포넌트 삭제"""
+  deleteMobileChild(
+    """ID"""
+    id: Int!
+  ): Boolean!
+
+  """사이트 생성"""
+  createSite(
+    """도메인"""
+    domain: String!
+
+    """이름"""
+    name: String!
+
+    """이메일"""
+    email: String!
+  ): Boolean!
+
+  """사이트 연결"""
+  connectSite(
+    """도메인"""
+    domain: String!
+  ): Boolean!
+
+  """사이트 연결 해제"""
+  disconnectSite(
+    """ID"""
+    id: Int!
+  ): Boolean!
+
+  """헤더 수정"""
+  updateHeader(
+    """사이트 ID"""
+    siteId: Int!
+
+    """로고"""
+    logo: String
+
+    """로고 사이즈"""
+    logoSize: String
+
+    """헤더 높이"""
+    height: String
+
+    """패딩"""
+    padding: String
+
+    """갭"""
+    gap: String
+
+    """배경 색상"""
+    backgroundColor: String
+
+    """텍스트 색상"""
+    textColor: String
+
+    """텍스트 크기"""
+    textSize: String
+  ): Boolean!
+
+  """모바일 헤더 수정"""
+  updateMobileHeader(
+    """사이트 ID"""
+    siteId: Int!
+
+    """로고"""
+    logo: String
+
+    """로고 사이즈"""
+    logoSize: String
+
+    """버튼"""
+    button: String
+
+    """버튼 사이즈"""
+    buttonSize: String
+
+    """헤더 높이"""
+    height: String
+
+    """패딩"""
+    padding: String
+
+    """매뉴 패딩"""
+    menuPadding: String
+
+    """배경 색상"""
+    backgroundColor: String
+
+    """메뉴 배경 색상"""
+    menuBackgroundColor: String
+
+    """텍스트 크기"""
+    textSize: String
+
+    """텍스트 색상"""
+    textColor: String
+  ): Boolean!
+
+  """푸터 수정"""
+  updateFooter(
+    """사이트 ID"""
+    siteId: Int!
+
+    """푸터 타입"""
+    footerType: Int!
+
+    """로고"""
+    logo: String
+
+    """로고 사이즈"""
+    logoSize: String
+
+    """상단 내용"""
+    contentTop: String
+
+    """고객센터"""
+    helpCenter: String
+
+    """약관"""
+    terms: String
+
+    """하단 내용"""
+    contentBottom: String
+
+    """배경 색상"""
+    backgroundColor: String
+
+    """상단 패딩"""
+    paddingTop: String
+
+    """하단 패딩"""
+    paddingBottom: String
+
+    """텍스트 크기"""
+    textSize: String
+
+    """텍스트 색상"""
+    textColor: String
+
+    """줄 높이"""
+    lineHeight: Float
+  ): Boolean!
+
+  """모바일 푸터 수정"""
+  updateMobileFooter(
+    """사이트 ID"""
+    siteId: Int!
+
+    """푸터 타입"""
+    footerType: Int!
+
+    """로고"""
+    logo: String
+
+    """로고 사이즈"""
+    logoSize: String
+
+    """상단 내용"""
+    contentTop: String
+
+    """고객센터"""
+    helpCenter: String
+
+    """약관"""
+    terms: String
+
+    """하단 내용"""
+    contentBottom: String
+
+    """배경 색상"""
+    backgroundColor: String
+
+    """상단 패딩"""
+    paddingTop: String
+
+    """하단 패딩"""
+    paddingBottom: String
+
+    """텍스트 크기"""
+    textSize: String
+
+    """텍스트 색상"""
+    textColor: String
+
+    """줄 높이"""
+    lineHeight: Float
+  ): Boolean!
+
+  """인증코드 발송"""
+  sendVerifyCode(
+    """이메일"""
+    email: String!
+  ): Boolean!
+
+  """이메일 인증"""
+  verifyEmail(
+    """이메일"""
+    email: String!
+
+    """인증 코드"""
+    verifyCode: String!
+  ): Boolean!
+
+  """문의 이메일 발송"""
+  SendInquiryEmail(
+    """랜딩페이지 ID"""
+    id: Int!
+
+    """문의자 이메일"""
+    userEmail: String!
+
+    """전화번호"""
+    phoneNumber: String!
+
+    """내용"""
+    content: String!
+  ): Boolean!
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+input ComponentStyleInput {
+  """높이"""
+  height: String
+
+  """패딩"""
+  padding: String
+
+  """그리드"""
+  grid: Int
+
+  """갭"""
+  gap: String
+
+  """배경"""
+  background: String
+
+  """배경 종류"""
+  backgroundType: BackgroundType
+}
+
+input ComponentMobileStyleInput {
+  """높이"""
+  height: String
+
+  """패딩"""
+  padding: String
+
+  """그리드"""
+  grid: Int
+
+  """갭"""
+  gap: String
+
+  """배경"""
+  background: String
+
+  """배경 종류"""
+  backgroundType: BackgroundType
+}
+
+input TitleStyleInput {
+  """마진"""
+  margin: String
+
+  """모바일 마진"""
+  mobileMargin: String
+
+  """텍스트 크기"""
+  size: String
+
+  """모바일 텍스트 크기"""
+  mobileSize: String
+
+  """줄 높이"""
+  lineHeight: Float
+
+  """모바일 줄 높이"""
+  mobileLineHeight: Float
+
+  """텍스트 색상"""
+  color: String
+
+  """모바일 텍스트 색상"""
+  mobileColor: String
+}
+
+input ContentStyleInput {
+  """마진"""
+  margin: String
+
+  """모바일 마진"""
+  mobileMargin: String
+
+  """텍스트 크기"""
+  size: String
+
+  """모바일 텍스트 크기"""
+  mobileSize: String
+
+  """줄 높이"""
+  lineHeight: Float
+
+  """모바일 줄 높이"""
+  mobileLineHeight: Float
+
+  """텍스트 색상"""
+  color: String
+
+  """모바일 텍스트 색상"""
+  mobileColor: String
+}
+
+input InquiryStyleInput {
+  """패딩"""
+  padding: String
+
+  """갭"""
+  gap: String
+
+  """텍스트 크기"""
+  textSize: String
+
+  """텍스트 색상"""
+  textColor: String
+
+  """줄 높이"""
+  lineHeight: Float
+
+  """배경 색상"""
+  backgroundColor: String
+
+  """버튼 너비"""
+  buttonWidth: String
+
+  """버튼 높이"""
+  buttonHeight: String
+
+  """버튼 텍스트 크기"""
+  buttonTextSize: String
+
+  """버튼 텍스트 색상"""
+  buttonTextColor: String
+
+  """버튼 텍스트 색상"""
+  buttonColor: String
+
+  """버튼 텍스트 곡률"""
+  buttonRadius: String
+}
+
+input MobileInquiryStyleInput {
+  """패딩"""
+  padding: String
+
+  """갭"""
+  gap: String
+
+  """텍스트 크기"""
+  textSize: String
+
+  """텍스트 색상"""
+  textColor: String
+
+  """줄 높이"""
+  lineHeight: Float
+
+  """배경 색상"""
+  backgroundColor: String
+
+  """버튼 너비"""
+  buttonWidth: String
+
+  """버튼 높이"""
+  buttonHeight: String
+
+  """버튼 텍스트 크기"""
+  buttonTextSize: String
+
+  """버튼 텍스트 색상"""
+  buttonTextColor: String
+
+  """버튼 텍스트 색상"""
+  buttonColor: String
+
+  """버튼 텍스트 색상"""
+  buttonRadius: String
+}
+
+input ChildStyleInput {
+  """너비"""
+  width: String
+
+  """높이"""
+  height: String
+
+  """마진"""
+  margin: String
+
+  """패딩"""
+  padding: String
+
+  """배경"""
+  background: String
+
+  """배경 종류"""
+  backgroundType: BackgroundType
+
+  """테두리"""
+  border: String
+
+  """테두리 곡률"""
+  borderRadius: String
+
+  """제목 크기"""
+  titleSize: String
+
+  """제목 색상"""
+  titleColor: String
+
+  """제목 줄 높이"""
+  titleLineHeight: Float
+
+  """제목 마진"""
+  titleMargin: String
+
+  """내용 크기"""
+  contentSize: String
+
+  """내용 색상"""
+  contentColor: String
+
+  """내용 줄 높이"""
+  contentLineHeight: Float
+
+  """내용 마진"""
+  contentMargin: String
+}
+
+input MobileChildStyleInput {
+  """너비"""
+  width: String
+
+  """높이"""
+  height: String
+
+  """마진"""
+  margin: String
+
+  """패딩"""
+  padding: String
+
+  """배경"""
+  background: String
+
+  """배경 종류"""
+  backgroundType: BackgroundType
+
+  """테두리"""
+  border: String
+
+  """테두리 곡률"""
+  borderRadius: String
+
+  """제목 크기"""
+  titleSize: String
+
+  """제목 색상"""
+  titleColor: String
+
+  """제목 줄 높이"""
+  titleLineHeight: Int
+
+  """제목 마진"""
+  titleMargin: String
+
+  """내용 크기"""
+  contentSize: String
+
+  """내용 색상"""
+  contentColor: String
+
+  """내용 줄 높이"""
+  contentLineHeight: Float
+
+  """내용 마진"""
+  contentMargin: String
+}
