@@ -1,4 +1,4 @@
-# 랜딩페이지 에디터 FRONTEND README
+# 랜딩페이지 에디터 BACKEND README
 
 ![Image](https://github.com/user-attachments/assets/68865ab7-3777-417d-b513-69054ebd23f7)
 
@@ -248,3 +248,5 @@
 <a href="https://github.com/puncharrow5" target="_blank">![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)</a>
 <a href="https://geode-divan-811.notion.site/a44da1efdf5b47ea8fe12a8f85b216ad" target="_blank">![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white)</a>
 <a href="https://www.linkedin.com/in/oh-seunghyeon-352708307" target="_blank">![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)</a>
+
+<br/>
