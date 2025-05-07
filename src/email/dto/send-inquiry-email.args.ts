@@ -1,6 +1,6 @@
 import { SiteEntity } from '@libs/entity';
 import { Field, ArgsType, PickType, Int } from '@nestjs/graphql';
-import { IsEmail, IsInt, IsString, Matches, Min } from 'class-validator';
+import { IsEmail, IsInt, IsString, Matches, MinLength } from 'class-validator';
 import { regexEmail, regexPhoneNumber } from 'libs/util/src';
 
 @ArgsType()
@@ -25,6 +25,6 @@ export class SendInquiryEmailArgs extends PickType(SiteEntity, ['id']) {
 
   @Field({ description: '내용' })
   @IsString({ message: '올바른 형식의 내용을 입력해주세요.' })
-  @Min(10, { message: '내용은 10자 이상 입력해주세요.' })
+  @MinLength(10, { message: '내용은 10자 이상 입력해주세요.' })
   content: string;
 }
