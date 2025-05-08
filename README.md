@@ -32,7 +32,7 @@
 <img src="https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white">   <img src="https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white"> 
 
 ### DevOps
-<img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white">   <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white"> 
+<img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white">    ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)    ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
 
 ### Environment
 <img src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white">
@@ -134,6 +134,7 @@
     - 3레벨 : 회원 관리 권한까지 부여됨
 - 사용자는 프로필 이미지를 설정할 수 있습니다.
 - 이미지 변경 후에는 유저 데이터를 즉시 refetch하여 새로고침 없이 변경 사항이 실시간으로 반영되도록 구현했습니다.
+- 모든 이미지는 업로드 시 서버를 통해 S3에 저장되며, 렌더링 시 서버가 S3에서 이미지를 불러와 프론트엔드에 전달합니다.
 
 | 프로필 |
 |----------|
