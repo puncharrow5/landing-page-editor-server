@@ -248,9 +248,8 @@
 <br>
 
 ## CONTACT
-<a href="mailto:seunghyeon9696@gmail.com">![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)</a>
-<a href="https://github.com/puncharrow5" target="_blank">![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)</a>
-<a href="https://geode-divan-811.notion.site/a44da1efdf5b47ea8fe12a8f85b216ad" target="_blank">![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white)</a>
-<a href="https://www.linkedin.com/in/oh-seunghyeon-352708307" target="_blank">![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)</a>
+<a href="https://kaku-portfolio.info/">![Portfolio](https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge&logo=firefox&logoColor=#FF7139)</a>&nbsp;&nbsp;
+<a href="https://geode-divan-811.notion.site/a44da1efdf5b47ea8fe12a8f85b216ad" target="_blank">![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white)</a>&nbsp;&nbsp;
+<a href="mailto:seunghyeon9696@gmail.com">![Gmail](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)</a>
 
 <br/>
