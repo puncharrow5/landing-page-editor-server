@@ -56,8 +56,8 @@ export class ComponentService {
       await createStyleEntity(tx.contentStyle);
 
       if (componentType === 'INQUIRY') {
-        createStyleEntity(tx.inquiryStyle);
-        createStyleEntity(tx.mobileInquiryStyle);
+        await createStyleEntity(tx.inquiryStyle);
+        await createStyleEntity(tx.mobileInquiryStyle);
       }
 
       await tx.history.create({
